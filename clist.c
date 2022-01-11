@@ -6,7 +6,7 @@
 /*   By: btenzlin <btenzlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:22:55 by btenzlin          #+#    #+#             */
-/*   Updated: 2022/01/11 17:09:40 by btenzlin         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:30:29 by btenzlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ t_clst	*insert_empty(t_clst *last, int value)
 	new->value = value;
 	last = new;
 	last->next = last;
+	return (last);
+}
+
+t_clst	*insert_first(t_clst *last, int value)
+{
+	t_clst	*new;
+
+	if (!last)
+		return (insert_empty(last, value));
+	new = malloc(sizeof(t_clst));
+	new->value = value;
+	new->next = last->next;
+	last->next = new;
 	return (last);
 }
 
@@ -66,10 +79,7 @@ t_clst	*init_list(int argc, char **argv)
 	last = NULL;
 	count = 2;
 	if (argc <= 1)
-	{
-		write(1, "Error\n", 6);
 		return (0);
-	}
 	last = insert_empty(last, ft_atoi(argv[1]));
 	while (argv[count])
 	{
