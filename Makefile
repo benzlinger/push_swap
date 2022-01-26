@@ -6,33 +6,48 @@
 #    By: btenzlin <btenzlin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 11:42:37 by btenzlin          #+#    #+#              #
-#    Updated: 2022/01/12 13:32:23 by btenzlin         ###   ########.fr        #
+#    Updated: 2022/01/26 14:57:25 by btenzlin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = push_swap
+
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-AR = ar rc
 RM = rm -f
 
-SRCS = clist.c \
-		main.c \
+SRCS =	main.c \
 		check.c \
-		operations.c
+		list.c \
+		operations_swap.c \
+		operations_push.c \
+		operations_rotate.c \
+		operations_rev_rotate.c \
+		algorithm.c \
+		new_split.c \
+		algorithm_utils.c \
+		algorithm_utils2.c \
+		algorithm_utils3.c
 
 OBJS = ${SRCS:.c=.o}
 
-main: $(OBJS)
-	@cd libft && make bonus
-	$(CC) $(FLAGS) $(SRCS) libft/libft.a -o push_swap
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@cd libft && make
+	$(CC) $(FLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
 libft:
-	@cd libft && make bonus
+	@cd libft && make
+
+re: fclean all
 
 clean:
 	@cd libft && make clean
 	$(RM) $(OBJS);
 
-fclean: clean
+fclean:
 	@cd libft && make fclean
-	$(RM) push_swap $(OBJS)
+	$(RM) $(NAME) $(OBJS)
+
+.PHONY: all clean fclean re libft

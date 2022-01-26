@@ -6,13 +6,13 @@
 /*   By: btenzlin <btenzlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:34:45 by btenzlin          #+#    #+#             */
-/*   Updated: 2022/01/12 12:39:15 by btenzlin         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:16:53 by btenzlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long	ft_atoi_ps(const char *str)
+long	ft_atoi_ps(const char *str)
 {
 	int		count;
 	long	isnegative;
@@ -42,7 +42,7 @@ static void	err_msg(char c)
 {
 	if (c == '1')
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	else if (c == '2')
@@ -56,6 +56,8 @@ static void	check_dup(char **argv)
 
 	i = 1;
 	j = 2;
+	if (!argv[1])
+		err_msg('1');
 	while (argv[i])
 	{
 		while (argv[j])
@@ -69,7 +71,7 @@ static void	check_dup(char **argv)
 	}
 }
 
-void	check_input(int argc, char **argv)
+int	check_input(int argc, char **argv)
 {
 	int		count;
 	int		size;
@@ -91,4 +93,5 @@ void	check_input(int argc, char **argv)
 			err_msg('1');
 		count++;
 	}
+	return (count);
 }

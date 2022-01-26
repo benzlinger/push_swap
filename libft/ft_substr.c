@@ -6,7 +6,7 @@
 /*   By: btenzlin <btenzlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:28:50 by btenzlin          #+#    #+#             */
-/*   Updated: 2021/09/16 12:09:36 by btenzlin         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:26:26 by btenzlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	size;
 	size_t	count;
 
-	if (!s || len < 0)
+	if (!s)
 		return (0);
 	size = ft_strlen(s);
 	if (size < start || len == 0)
